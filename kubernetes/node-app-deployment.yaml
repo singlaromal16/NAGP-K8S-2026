@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app-deployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: node-app
+  template:
+    metadata:
+      name: node-app-pod 
+      labels:
+        app: node-app
+    spec:
+      containers:
+      - name: node-app-container
+        image: singlaromal16/k8-node-app:3.0.0
+        ports:
+        - containerPort: 3000
+        env:
+        - name: MONGODB_HOST
+          valueFrom:
+           configMapKeyRef: 
+            name: mongodb-configmap 
+            key: mongodb_host
+
+        - name: MONGODB_PORT
+          valueFrom:
+           configMapKeyRef: 
+            name: mongodb-configmap 
+            key: mongodb_port
+
+        - name: MONGODB_DATABASE
+          valueFrom:
+           configMapKeyRef: 
+            name: mongodb-configmap 
+            key: mongodb_database
+        
+        - name: MONGODB_USERNAME
+          valueFrom:
+           configMapKeyRef: 
+            name: mongodb-configmap 
+            key: mongodb_username
+        
+        - name: MONGODB_PASSWORD
+          valueFrom:
+           secretKeyRef: 
+            name: mongodb-secret
+            key: mongodb_password
+
+        - name: APP_IMAGE_VERSION
+          value: "1.0.0"
