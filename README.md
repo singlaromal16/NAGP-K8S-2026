@@ -4,6 +4,7 @@ https://github.com/singlaromal16/NAGP-K8S-2026/tree/NAGP-K8S-2026
 ### Docker Hub Link
 https://hub.docker.com/repository/docker/singlaromal16/k8-node-app/general
 
-###  Service API URL
+### Service Tier URL
+http://104.196.112.196/nagp-k8-app/users
 
-### Screen Recording Link
+### Video Link
